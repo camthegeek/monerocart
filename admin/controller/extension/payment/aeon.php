@@ -1,15 +1,15 @@
 <?php
-class ControllerExtensionPaymentMonero extends Controller {
+class ControllerExtensionPaymentAeon extends Controller {
     private $error = array();
     private $settings = array();
     public function index() {
-        $this->load->language('extension/payment/monero');
+        $this->load->language('extension/payment/aeon');
         $this->document->setTitle($this->language->get('heading_title'));
         $this->load->model('setting/setting');
         
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-            $this->model_setting_setting->editSetting('payment_monero', $this->request->post);
-            $this->session->data['success'] = "Success! Welcome to monero!";
+            $this->model_setting_setting->editSetting('payment_aeon', $this->request->post);
+            $this->session->data['success'] = "Success! Welcome to aeon!";
             $this->response->redirect($this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=payment', true));
         }
         
@@ -20,20 +20,20 @@ class ControllerExtensionPaymentMonero extends Controller {
         $data['text_yes'] = $this->language->get('text_yes');
         $data['text_no'] = $this->language->get('text_no');
         $data['text_edit'] = $this->language->get('text_edit');
-        $data['monero_address_text'] = $this->language->get('wallet_address');
+        $data['aeon_address_text'] = $this->language->get('wallet_address');
         $data['button_save'] = "save";
         $data['button_cancel'] = $this->language->get('button_cancel');
         $data['entry_geo_zone'] = $this->language->get('entry_geo_zone');
         $data['help_total'] = $this->language->get('help_total');
-        $data['settings'] = $this->config->get('monero');
+        $data['settings'] = $this->config->get('aeon');
         //Errors
         $data['error_warning'] = isset($this->error['warning']) ? $this->error['warning'] : '';     
 
        // Values for Settings
-        $data['payment_monero_status'] = isset($this->request->post['payment_monero_status']) ? $this->request->post['payment_monero_status'] : $this->config->get('payment_monero_status');
-        $data['payment_monero_address'] = isset($this->request->post['payment_monero_address']) ? $this->request->post['payment_monero_address'] : $this->config->get('payment_monero_address');
-        $data['payment_monero_wallet_rpc_host'] = isset($this->request->post['payment_monero_wallet_rpc_host']) ? $this->request->post['payment_monero_wallet_rpc_host'] : $this->config->get('payment_monero_wallet_rpc_host');
-        $data['payment_monero_wallet_rpc_port'] = isset($this->request->post['payment_monero_wallet_rpc_port']) ? $this->request->post['payment_monero_wallet_rpc_port'] : $this->config->get('payment_monero_wallet_rpc_port');     
+        $data['payment_aeon_status'] = isset($this->request->post['payment_aeon_status']) ? $this->request->post['payment_aeon_status'] : $this->config->get('payment_aeon_status');
+        $data['payment_aeon_address'] = isset($this->request->post['payment_aeon_address']) ? $this->request->post['payment_aeon_address'] : $this->config->get('payment_aeon_address');
+        $data['payment_aeon_wallet_rpc_host'] = isset($this->request->post['payment_aeon_wallet_rpc_host']) ? $this->request->post['payment_aeon_wallet_rpc_host'] : $this->config->get('payment_aeon_wallet_rpc_host');
+        $data['payment_aeon_wallet_rpc_port'] = isset($this->request->post['payment_aeon_wallet_rpc_port']) ? $this->request->post['payment_aeon_wallet_rpc_port'] : $this->config->get('payment_aeon_wallet_rpc_port');     
         $data['breadcrumbs'] = array();
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('text_home'),
@@ -45,18 +45,18 @@ class ControllerExtensionPaymentMonero extends Controller {
         );
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('extension/payment/monero', 'user_token=' . $this->session->data['user_token'], true)
+            'href' => $this->url->link('extension/payment/aeon', 'user_token=' . $this->session->data['user_token'], true)
         );
-        $data['action'] = $this->url->link('extension/payment/monero', 'user_token=' . $this->session->data['user_token'], true);
+        $data['action'] = $this->url->link('extension/payment/aeon', 'user_token=' . $this->session->data['user_token'], true);
         $data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=payment', true);
         $data['header'] = $this->load->controller('common/header');
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
-        $this->response->setOutput($this->load->view('extension/payment/monero', $data));
+        $this->response->setOutput($this->load->view('extension/payment/aeon', $data));
     }
    
     private function validate() {
-        if (!$this->user->hasPermission('modify', 'extension/payment/monero')) {
+        if (!$this->user->hasPermission('modify', 'extension/payment/aeon')) {
             $this->error['warning'] = $this->language->get('error_permission');
             return false;
         }
@@ -64,9 +64,9 @@ class ControllerExtensionPaymentMonero extends Controller {
     }
    
     public function uninstall() {
-        $this->load->model('extension/payment/monero');
+        $this->load->model('extension/payment/aeon');
         $this->load->model('setting/setting');
-        $this->model_setting_setting->deleteSetting('monero');
-        $this->model_extension_payment_monero->dropDatabaseTables();
+        $this->model_setting_setting->deleteSetting('aeon');
+        $this->model_extension_payment_aeon->dropDatabaseTables();
     }
 }

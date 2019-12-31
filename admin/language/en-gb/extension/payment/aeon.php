@@ -4,13 +4,13 @@
 $_['text_aeon'] = '<a href="http://monerointegrations.com">The Monero Integrations Project</a>';
 
 // Heading
-$_['heading_title']					= 'Monero Payment Gateway';
+$_['heading_title']					= 'AEON Payment Gateway';
 
 // Settings
-$_['wallet_address']				= 'Monero Wallet address';
+$_['wallet_address']				= 'AEON Wallet address';
 
-$_['wallet_host']					= 'Monero RPC Host';
-$_['wallet_port']					= 'Monero RPC Port';
+$_['wallet_host']					= 'AEON RPC Host';
+$_['wallet_port']					= 'AEON RPC Port';
 $_['wallet_ssl']					= 'SSL';
 $_['aeon_yes']						= 'Yes';
 $_['aeon_no']						= 'No';
@@ -23,10 +23,10 @@ $_['aeon_sort_order']				= 'Sort Order';
 $_['entry_status']       = 'Status';
 // Text
 $_['text_payment']					= 'Payment';
-$_['text_success']					= 'Success: You have modified the Monero payment gateway!';
+$_['text_success']					= 'Success: You have modified the AEON payment gateway!';
 $_['text_extension']     			= 'Extensions';
 
 // Error
-$_['error_permission']				= 'Warning: You do not have permission to modify the Monero payment gateway!';
+$_['error_permission']				= 'Warning: You do not have permission to modify the AEON payment gateway!';
 
 ?>
